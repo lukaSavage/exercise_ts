@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Button } from 'antd';
+import { Link, Route, Switch, Redirect } from 'react-router-dom'
 
-function App() {
-  return (
+import Index from './pages/index'
+import Two from './pages/Two'
+
+import './App.less'
+
+const App: FC = () => (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Button type="primary" className="bbb"><Link to="/index">去index页面</Link></Button>
+        <Button type="primary"><Link to="/other">去第二个页面</Link></Button>
+        <hr />
+        <Switch>
+            <Route path="/index" component={Index}></Route>
+            <Route path="/other" component={Two}></Route>
+            <Redirect to="/index" />
+        </Switch>
     </div>
-  );
-}
+);
 
 export default App;
